@@ -1,0 +1,285 @@
+  <menu></menu>
+  <div class="ui-g">
+      <div class="ui-g-12" >
+          <div class="ui-g-6" >
+          <p-panel header="Payment Information">
+              <div class="ui-grid-row">
+                  <div class="ui-grid-col-12" style="padding-top:.70%;text-align:center">
+                        <h5 style="color:green;font-weight: bold">PURCHASE DETAILS</h5>
+                  </div>
+              </div>
+
+              <div class="ui-grid-row">
+                  <div class="ui-grid-col-12" *ngFor="let a of paymentDetails; let index = index" style="margin-left:40%">
+                        <a (click)="payment(index)" style="cursor:pointer;">payment {{index + 1}}<span style="color:#f47920;padding-left:1%">({{a.paymentInfo.transactions.itemList.item.name}})</span></a>
+                  </div>
+              </div>
+           
+           
+              <div class="ui-grid-row" style="margin-top:2%;">
+     
+                <div class="ui-grid-col-12" style="text-align:center" *ngIf="registartionModel.registrationDate == null">
+                    <button pButton type="button"   iconPos="right" (click)="goToRegistraion()" label="Registration"></button>
+                </div>
+
+                 <div class="ui-grid-col-12" style="text-align:center;margin-top:1%" >
+                    <button pButton type="button"   iconPos="right" (click)="anotherPayment()" label="Another Payment"></button>
+                </div>
+
+            </div>
+
+            <hr>
+
+               <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" >
+                   <div class="ui-grid-col-12" style="padding-right:10%;padding-left:10%;padding-bottom:24.5%">
+                    <h3 style="color:black;font-weight: bold;text-align:center;padding-bottom:2%">PAYMENT {{index + 1}} FOR {{paymentDetail.paymentInfo.transactions.itemList.item.name}} </h3>
+                        <table class="tableStyle" >
+                            <tbody class="tbodyStyle">
+                                 <tr class="trStyle">
+                                      <td class="tdLabelStyle">NAME</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.candidateName}}</td>
+                                 </tr>
+                            </tbody>
+
+                             <tbody class="tbodyStyle">
+                                    <tr class="trStyle">
+                                       <td class="tdLabelStyle">PHONE</td>
+                                       <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.workMobile}}</td>
+                                    </tr>
+                             </tbody>
+
+                            <tbody class="tbodyStyle">
+                                 <tr class="trStyle">
+                                      <td class="tdLabelStyle">EMAIL</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.email}}</td>
+                                 </tr>
+                            </tbody>
+
+                         <tbody class="tbodyStyle">
+                             <tr class="trStyle">
+                                 <td class="tdLabelStyle">LINE 1</td>
+                                 <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.line1}}</td>
+                             </tr>
+                         </tbody>
+
+                         <tbody class="tbodyStyle">
+                             <tr class="trStyle">
+                                 <td class="tdLabelStyle">LINE2</td>
+                                 <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">
+                                     <span *ngIf="paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.line2 == null">
+                                            N/A
+                                     </span>
+                                     {{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.line2}}
+                                 </td>
+                             </tr>
+                         </tbody>
+
+                             <tbody class="tbodyStyle">
+                                 <tr class="trStyle">
+                                     <td class="tdLabelStyle">COUNTRY</td>
+                                     <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.countryCode}}</td>
+                                 </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                   <td class="tdLabelStyle">CITY</td>
+                                   <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.city}}</td>
+                                </tr>
+                            </tbody>
+
+                             <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                   <td class="tdLabelStyle">POSTAL</td>
+                                  <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.postalCode}}</td>
+                                </tr>
+                             </tbody>
+
+                            <tbody class="tbodyStyle">
+                              <tr class="trStyle">
+                                <td class="tdLabelStyle">STATE</td>
+                                <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.state}}</td>
+                              </tr>
+                            </tbody>
+                        </table>
+                        
+                   </div>
+
+                  
+               </div>
+
+               
+          </p-panel>
+          </div>
+
+          <div class="ui-g-6">
+
+               <div class="ui-grid-col-12" style="padding-right:2%">
+                        <h5 style="color:#f47920;font-weight: bold">PAYMENT INFORMATION :</h5>
+                        <table class="tableStyle">
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle">PAYMENT ID</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payemntId}}</td>
+                                  </tr>
+                            </tbody>
+                           
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                       <td class="tdLabelStyle">PAYMENT METHOD</td>
+                                       <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.paymentMethod}}</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                       <td class="tdLabelStyle">PAYMENT STATUS</td>
+                                       <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.status}}</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                       <td class="tdLabelStyle">CREATED DATE</td>
+                                       <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.createdDate}}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <h5 style="color:#f47920;font-weight: bold">ADDRESS :</h5>
+                            <table class="tableStyle">
+                                <tbody class="tbodyStyle">
+                                    <tr class="trStyle">
+                                       <td class="tdLabelStyle" style="width:38%">RECIPIENT NAME</td>
+                                       <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.recipientName}}</td>
+                                  </tr>
+                                </tbody>
+
+                                <tbody class="tbodyStyle">
+                                    <tr class="trStyle">
+                                        <td class="tdLabelStyle" >LINE 1</td>
+                                        <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.line1}}</td>
+                                    </tr>
+                                </tbody>
+
+                                <tbody class="tbodyStyle">
+                                        <tr class="trStyle">
+                                            <td class="tdLabelStyle">LINE2</td>
+                                            <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">
+                                                <span *ngIf="paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.line2 == null">
+                                                        N/A
+                                                </span>
+                                                {{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.line2}}
+                                            </td>
+                                        </tr>
+                                </tbody>
+
+                                <tbody class="tbodyStyle">
+                                    <tr class="trStyle">
+                                        <td class="tdLabelStyle" >COUNTRY</td>
+                                        <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.countryCode}}</td>
+                                    </tr>
+                               </tbody>
+
+                                <tbody class="tbodyStyle">
+                                    <tr class="trStyle">
+                                    <td class="tdLabelStyle" >CITY</td>
+                                    <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.city}}</td>
+                                    </tr>
+                                </tbody>
+
+                                <tbody class="tbodyStyle">
+                                    <tr class="trStyle">
+                                    <td class="tdLabelStyle" >POSTAL</td>
+                                    <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.postalCode}}</td>
+                                    </tr>
+                                </tbody>
+
+                                <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                    <td class="tdLabelStyle" >STATE</td>
+                                    <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.payer.payerInfo.shippingAddress.state}}</td>
+                                </tr>
+                                </tbody>
+
+                            </table>
+
+                        <h5 style="color:#f47920;font-weight: bold">AMOUNT :</h5>
+                        <table class="tableStyle">
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle" style="width:38%">CURRENCY</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{this.paymentDetail.paymentInfo.transactions.amount.currency}}</td>
+                                
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle">TOTAL</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{this.paymentDetail.pricePerItem}}</td>
+                                
+                                </tr>
+                            </tbody>
+
+                             <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle">PAID AMOUNT</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{this.paymentDetail.paymentInfo.transactions.amount.details.subtotal}}</td>
+                                
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle">DUE AMOUNT</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{this.paymentDetail.dueAmount}}</td>
+                                
+                                </tr>
+                            </tbody>
+
+                        </table>
+                     
+                     <h5 style="color:#f47920;font-weight: bold">ITEM :</h5>
+                        <table class="tableStyle">
+                           
+
+                             <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle" style="width:38%">COURSE NAME</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.transactions.itemList.item.name}}</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle">QUANTITY</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.transactions.itemList.item.quantity}}</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle">PRICE</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{this.paymentDetail.pricePerItem}}</td>
+                                </tr>
+                            </tbody>
+
+                            <tbody class="tbodyStyle">
+                                <tr class="trStyle">
+                                      <td class="tdLabelStyle">CURRENCY</td>
+                                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{paymentDetail.paymentInfo.transactions.itemList.item.currency}}</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                   </div>
+          </div>
+
+      </div>
+  </div>
+
+
+ 

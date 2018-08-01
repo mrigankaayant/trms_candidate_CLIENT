@@ -1,0 +1,77 @@
+<div style="width:33%;margin-left:36%;margin-top:6%;height:100%;box-shadow:  2px 2px 2px 2px #888888;"> 
+<form id="loginForm" [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+ 
+
+ <div> 
+    <img src="../app/asset/image/login_background.jpg" style="position: fixed;top: 0;left: 0;min-width: 100%;min-height: 100%;opacity:0.4;">
+    </div>
+
+<div style="padding-bottom:4%">
+        <p-messages [value]="msgs" ></p-messages>
+     </div>
+
+ <div id="a" style="position: relative;text-align: left;margin: 24px 0 12px 0;padding-bottom:0px;margin-bottom:0px">
+     <img src="../app/asset/image/git.png" style="width: 35%;border-radius: 50%;padding-left:10%;height:30%">
+  </div>
+
+  <div style="position: relative;text-align: left;padding-bottom:9%;margin:0px;">
+     <h1 style="padding-left:13%;font-size: 24px;font-weight: 400;line-height: 1.3333;">Sign In</h1>
+    
+     <p style="padding-left:13.3%;">To Traning & Resource Module</p>
+  
+  </div>
+  
+     
+
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid">
+            <div class="ui-grid-row" >
+        
+                <div class="ui-grid-col-12"  style="padding-left:10%;padding-right:10%">
+                        <span class="ui-float-label">
+                            <input  pInputText  id="username"  style="border-top: 0;border-right: 0;border-left: 0; border-bottom-left-radius: 0;border-bottom-right-radius: 0;" type="text"  formControlName="username" />
+                             <label for="username" >User Name</label>
+                        </span>
+                </div>
+            </div>
+
+        <div class="ui-grid-row" > 
+            <div class="ui-grid-col-12" style="padding-left:10%;padding-right:10%">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!loginForm.controls['username'].valid&&loginForm.controls['username'].dirty">
+                           
+                            User Name is required
+                    </div>
+                </div>
+        </div>
+
+            <div class="ui-grid-row" style="padding-top:4%">
+                <div class="ui-grid-col-12" style="padding-left:10%;padding-right:10%">
+                    <span class="ui-float-label">
+                   <input pInputText  id="password" type="password" style="border-top: 0;border-right: 0;border-left: 0; border-bottom-left-radius: 0;border-bottom-right-radius: 0;" formControlName="password" />
+                   <label for="password">Password</label>
+                   </span>
+                </div>
+           </div>
+
+           <div class="ui-grid-row" > 
+                  <div class="ui-grid-col-12" style="padding-left:10%;padding-right:10%">
+                       <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!loginForm.controls['password'].valid&&loginForm.controls['password'].dirty">
+                           
+                            Password is required
+                        </div>
+                  </div>
+
+            </div>
+            
+           <div class="ui-grid-row" style="margin-top:10%;margin-bottom:20%">
+                
+                <span style="margin-right:67%">
+                </span>
+                <div class="ui-grid-col-3">
+                   <button pButton type="submit" icon="fa-sign-in" iconPos="right" [disabled]="!loginForm.valid" label="Login"></button>
+                </div>
+            </div>
+    
+    </div> 
+    
+    </form>
+</div>

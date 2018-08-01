@@ -1,0 +1,155 @@
+.row{
+    background-color: #f3f6f9;
+}
+
+.gridLabel{
+    background-color: #f3f6f9;
+    color: #404c51;
+    padding: 4px 10px;
+    border: 1px solid #e5ebf0;
+}
+
+.gridInputBox{
+    color: black;
+    background-color:white;
+    padding: 4px 10px;
+    border: 1px solid #e5ebf0;
+    position: relative;
+}
+
+.errorMessage{
+    color: #f47920;
+    font-size: 12px;
+    padding: 0 4px;
+    line-height: 16px;
+    background: #fff;
+    border: 1px solid #f47920;
+    border-radius: 3px;
+   
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.gridInputBox .tooltiptext {
+   
+    width: 140px;
+    background-color: rgb(76, 76, 76);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 110%;
+    left: 50%;
+    margin-left: -60px;
+    font-size:11px;
+    white-space: pre-line;
+    
+}
+
+.gridInputBox .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(76, 76, 76) transparent transparent transparent;
+   
+}
+
+
+.tableStyle{
+    border-collapse: collapse;
+    width: 100%;
+   
+}
+
+.tbodyStyle{
+    display: table-row-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.trStyle{
+background-color: #f3f6f9;
+}
+
+.tdLabelStyle{
+    color: #404c51;
+    padding: 4px 10px;
+    border: 1px solid #e5ebf0;
+    font-size: 15px;
+    opacity: .9;
+}
+
+.tdValueStyle{
+    color: black;
+    background-color:white;
+    padding: 4px 10px;
+    border: 1px solid #e5ebf0;
+    font-size: 15px;
+}
+
+.tHeadStyle{
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+}
+
+.thStyle{
+    background-color: #dae8ef;
+    color: #404c51;
+    border: 1px solid #c1d5df;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.tooltiptext1 {
+   
+    width: 140px;
+    background-color: rgb(76, 76, 76);
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 20%;
+    margin-left: -60px;
+    font-size:11px;
+    white-space: pre-line;
+    
+}
+
+.tooltiptext1::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: rgb(76, 76, 76) transparent transparent transparent;
+   
+}
+
+.mybutton {
+    display: inline-block;
+    width: 120px;
+    height: 30px;
+    background: #2399e5;;
+    padding: 2px;
+    padding-right: 8px;
+    padding-left: 5px;
+    text-align: center;
+    border-radius: 3px;
+    color: white;
+    font-weight: bold;
+}

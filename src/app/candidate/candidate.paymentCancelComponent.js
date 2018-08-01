@@ -1,0 +1,51 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var candidate_service_1 = require("./candidate.service");
+var PaymentCancelComponent = (function () {
+    function PaymentCancelComponent(router, route, candidateService) {
+        this.router = router;
+        this.route = route;
+        this.candidateService = candidateService;
+    }
+    PaymentCancelComponent.prototype.ngOnInit = function () {
+    };
+    PaymentCancelComponent.prototype.goToPaymentForm = function () {
+        var _this = this;
+        //sessionStorage.clear();
+        //this.router.navigate(['login']);
+        this.candidateService.getUserType().subscribe(function (data) {
+            _this.userMst = data;
+        }, function (err) {
+            console.log(err);
+        }, function () {
+            _this.candidateService.getCandidateDetailsByUserId(_this.userMst.userId).subscribe(function (data) {
+                _this.candidateId = data.candidateId;
+            }, function (err) {
+                console.log(err);
+            }, function () {
+                _this.router.navigate(['candidate/makePayment', _this.candidateId]);
+            });
+        });
+    };
+    return PaymentCancelComponent;
+}());
+PaymentCancelComponent = __decorate([
+    core_1.Component({
+        selector: 'cancel',
+        templateUrl: 'app/candidate/cancelPayment.html',
+        styleUrls: ['./app/candidate/candidate.css']
+    }),
+    __metadata("design:paramtypes", [router_1.Router, router_1.ActivatedRoute, candidate_service_1.CandidateService])
+], PaymentCancelComponent);
+exports.PaymentCancelComponent = PaymentCancelComponent;
+//# sourceMappingURL=candidate.paymentCancelComponent.js.map

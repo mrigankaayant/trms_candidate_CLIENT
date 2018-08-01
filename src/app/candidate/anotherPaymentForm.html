@@ -1,0 +1,190 @@
+<span *ngIf="showloader" class="loader">
+    <img src="../app/asset/image/loading.gif"  style="padding-top:20%;" width="90">
+</span>
+<menu *ngIf="!showloader" ></menu>
+
+<div class="ui-g" *ngIf="!showloader"> 
+    
+         <div class="ui-g-12" >
+            <p-messages [(value)]="msgs"></p-messages>
+            <p-panel header="Payment Form">
+             
+                
+                <form id="paymentForm" [formGroup]="paymentForm"> 
+                    
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="padding-left:20%;padding-right:20%;">
+
+                            <div class="ui-grid-row" styleClass="row">
+                                <div class="ui-grid-col-2 gridLabel" >
+                                    COURSE NAME<span style="color:red">*</span>
+                                </div>
+                                <div class="ui-grid-col-10 gridInputBox" >
+                        
+                                    <span *ngIf="!paymentForm.controls['coureseName'].valid&&!paymentForm.controls['coureseName'].pristine">
+                                        <span class="tooltiptext">Course Name Required</span>
+                                    </span>
+                                    <p-dropdown [options]="selectedCancourse" [autoWidth]="false" formControlName="coureseName" ></p-dropdown>
+                                    
+                                    <input  hidden="true"  formControlName="returnUrl" type="text"/>
+                                    <input  hidden="true"  formControlName="candidateId" type="text"/>
+                                </div>  
+
+                            </div>
+
+                             <div class="ui-grid-row" >
+                                 <div class="ui-grid-col-2" >
+                                    <button pButton type="button" (click)="addAnotherCourse()" label="Add  Course +"></button>
+                                </div>
+                                
+                             </div>
+                            
+                            <div class="ui-grid-row" styleClass="row">
+                                <div class="ui-grid-col-2 gridLabel" >
+                                    AMOUNT<span style="color:red">*</span>
+                                </div>
+                                <div class="ui-grid-col-10 gridInputBox" >
+
+                                    <span *ngIf="!paymentForm.controls['amount'].valid&&!paymentForm.controls['amount'].pristine">
+                                        <span class="tooltiptext">Amount Required</span>
+                                    </span>
+                                    <input id="amount"  placeholder="Enter Amount" pInputText   size="36%"  formControlName="amount" type="number"/>
+                                </div>  
+
+                            </div>
+
+                            <div class="ui-grid-row" styleClass="row">
+                                <div class="ui-grid-col-2 gridLabel" >
+                                    NAME<span style="color:red">*</span>
+                                </div>
+                                <div class="ui-grid-col-10 gridInputBox" >
+
+                                    <span *ngIf="!paymentForm.controls['candidateName'].valid&&!paymentForm.controls['candidateName'].pristine">
+                                        <span class="tooltiptext">Name Required</span>
+                                    </span>
+                                    <input id="firstName" [readOnly]="true" placeholder="First Name" pInputText   size="36%"  formControlName="candidateName"/>
+                                </div>  
+
+                            </div>
+
+                              
+
+                             <div class="ui-grid-row" styleClass="row">
+                                <div class="ui-grid-col-2 gridLabel" >
+                                    E-MAIL<span style="color:red">*</span>
+                                </div>
+                                <div class="ui-grid-col-10 gridInputBox" >
+
+                                    <span *ngIf="!paymentForm.controls['email'].valid&&!paymentForm.controls['email'].pristine">
+                                        <span class="tooltiptext"> E-Mail required</span>
+                                    </span>
+
+                                    <span *ngIf="paymentForm.get('email').hasError('pattern')&&!paymentForm.get('email').pristine">
+                                               <span  class="tooltiptext"> Enter Valid Email</span>
+                                    </span>
+
+                                    <input id="email" [readOnly]="true" placeholder="E-Mail" pInputText   size="36%"  formControlName="email"/>
+                                </div>  
+
+                            </div>
+
+                            <div class="ui-grid-row" styleClass="row">
+                                <div class="ui-grid-col-2 gridLabel" >
+                                    PHONE<span style="color:red">*</span>
+                                </div>
+                                <div class="ui-grid-col-10 gridInputBox" >
+
+                                    <span *ngIf="!paymentForm.controls['workMobile'].valid&&!paymentForm.controls['workMobile'].pristine">
+                                        <span class="tooltiptext"> Phone required</span>
+                                    </span>
+
+                                    <span *ngIf="paymentForm.get('workMobile').hasError('pattern')&&!paymentForm.get('workMobile').pristine">
+                                               <span  class="tooltiptext"> Enter Valid Phone</span>
+                                    </span>
+
+                                    <input id="phone" [readOnly]="true" placeholder="Phone" pInputText   size="36%"  formControlName="workMobile"/>
+                                </div>  
+
+                            </div>
+
+                            
+                            <div class="ui-grid-row" styleClass="row">
+                                <div class="ui-grid-col-2 gridLabel" >
+                                   PRICE PER ITEM <span style="color:red">*</span>
+                                </div>
+                                <div class="ui-grid-col-10 gridInputBox" >
+
+                                    <span *ngIf="!paymentForm.controls['pricePerItem'].valid&&!paymentForm.controls['pricePerItem'].pristine">
+                                        <span class="tooltiptext"> Price Per Item required</span>
+                                    </span>
+                                   <input id="pricePerItem" type="number" placeholder="Enter Price Per Item" pInputText   size="36%"  formControlName="pricePerItem"/>
+                                </div>  
+                            </div>
+
+
+                              <div class="ui-grid-row" styleClass="row">
+                                <div class="ui-grid-col-2 gridLabel" >
+                                    QUANTITY <span style="color:red">*</span>
+                                </div>
+                                <div class="ui-grid-col-10 gridInputBox" >
+
+                                    <span *ngIf="!paymentForm.controls['quantity'].valid&&!paymentForm.controls['quantity'].pristine">
+                                        <span class="tooltiptext"> Quantity required</span>
+                                    </span>
+                                   <input id="quantity" [readOnly]="true"  placeholder="Enter Quantity" pInputText   size="36%"  formControlName="quantity"/>
+                                </div>  
+                             </div>
+                    </div>
+
+                
+                    <div class="ui-g" style="margin-top:1%;">
+                        <div class="ui-grid-col-12" style="text-align:center" >
+                        
+                        <span  style="cursor:pointer;text-decoration:underline" (click)="paymentThroughPaypal()"> 
+                            <img src="../../app/asset/image/paypal.png" width="110">
+		               </span>
+                        
+                        </div>
+                    </div>
+
+                </form>
+            </p-panel>
+
+        <div *ngIf="displayAddCourseModel" style="padding-top:2%">
+             <p-panel header="Add Course">
+             <form [formGroup]="addCourseForm">
+                                          <div class="ui-grid ui-grid-responsive  ui-fluid" style="padding-left:20%;padding-right:20%;">
+                                                <div class="ui-grid-row" styleClass="row">
+                                                    
+                                                    <div class="ui-grid-col-2 gridLabel" >
+                                                        COURSE NAME
+                                                    </div>
+                                                    
+                                                    <div class="ui-grid-col-10 gridInputBox" >
+                                                        <p-multiSelect [options]="canSkills"  formControlName="allSkill" ></p-multiSelect>
+                                                    </div>  
+
+                                                </div>
+                                          </div>
+
+                                           <div class="ui-grid-row" style="text-align:center">
+                                                    <button pButton type="button" (click)="addCourses()" label="Submit"></button>
+                                            </div>
+
+            </form>
+             </p-panel>
+        </div>
+            <div style="margin-left:1%;margin-bottom:1%;">
+                   <span style="color:red">*</span> Mandatory Fields 
+             </div>
+
+         </div> 
+
+</div>
+
+
+              
+                                 
+                                    
+                                 
+                
+        

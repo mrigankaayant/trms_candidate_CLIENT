@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Angular Quickstart</title>
+  <base href="/">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/themes/omega/theme.css" />
+  <link rel="stylesheet" type="text/css" href="/node_modules/primeng/resources/primeng.min.css" />
+  <link rel="stylesheet" type="text/css" href="/node_modules/font-awesome/css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="/node_modules/quill/dist/quill.core.css" />
+  <link rel="stylesheet" type="text/css" href="/node_modules/quill/dist/quill.snow.css" />
+  <link rel="stylesheet" type="text/css" href="app/asset/css/loader.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="app/asset/css/style.css" />-->
+
+  <!-- Polyfills -->
+  <script src="node_modules/core-js/client/shim.min.js"></script>
+  <script src="node_modules/zone.js/dist/zone.js"></script>
+  <script src="node_modules/systemjs/dist/system.src.js"></script>
+  <script src="systemjs.config.js"></script>
+  <link rel="stylesheet" href="app/asset/css/bootstrap.min.css">
+  <script src="app/asset/js/jquery.min.js"></script>
+  <script src="app/asset/js/bootstrap.min.js"></script>
+  <script src="node_modules/quill/dist/quill.js"></script>
+ <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script> -->
+  <script>
+    System.import('main.js').catch(function (err) { console.error(err); });
+  </script>
+
+</head>
+
+<body>
+  <my-app>
+    
+    <span *ngIf="showLoader" class="loader">
+      
+         <img src="../app/asset/image/loading.gif" style="padding-top:20%;" width="90" > 
+      
+    </span>
+
+  </my-app>
+</body>
+
+</html>

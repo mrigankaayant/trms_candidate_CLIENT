@@ -1,0 +1,248 @@
+<span *ngIf="showloader" class="loader">
+    <img src="../app/asset/image/loading.gif"  style="padding-top:20%;" width="90">
+</span>
+
+<menu *ngIf="!showloader" ></menu>
+<div class="ui-g" *ngIf="!showloader" >
+    
+     
+        <div class="ui-g-12" >
+            <p-panel header="Registration Information">
+
+             <div class="ui-grid-row">
+                  
+                  <div class="ui-grid-col-12" style="text-align:center">
+                        <h5 style="color:green;font-weight: bold">REGISTRATION DETAILS</h5>
+                  </div>
+              </div>
+               
+                    <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" >
+
+<div class="ui-grid-col-12" style="padding-right:2%">
+
+                             <h5 style="color:#f47920;font-weight: bold">CANDIDATE INFORMATION :</h5>
+      <table class="tableStyle">
+
+             <tbody class="tbodyStyle">
+
+                 <tr class="trStyle">
+                      <td class="tdLabelStyle">NAME</td>
+                      <td  class ="tdValueStyle" colspan="3" style="border-top-color:#e5ebf0">{{candidate.candidateName}}</td>
+                 </tr>
+
+                  <tr class="trStyle">
+
+                       <td class="tdLabelStyle">DATE OF BIRTH</td>
+                       <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{candidate.dateOfBirth | date}}</td>
+
+                      <td class="tdLabelStyle">GENDER</td>
+                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{candidate.gender}}</td>
+
+                  </tr>
+
+                   <tr class="trStyle">
+
+                     <td class="tdLabelStyle">COUNTRY</td>
+                     <td  class ="tdValueStyle" style="border-top-color:#e5ebf0">{{candidate.country}}</td>
+                       
+                      <td class="tdLabelStyle">STATE</td>
+                      <td class ="tdValueStyle" style="border-top-color:#e5ebf0">{{candidate.state}}</td>
+
+                  </tr>
+
+                  <tr class="trStyle">
+
+                       <td class="tdLabelStyle">CITY</td>
+                       <td class ="tdValueStyle" style="border-top-color:#e5ebf0">{{candidate.city}}</td>
+
+                       <td class="tdLabelStyle">ZIP</td>
+                       <td class ="tdValueStyle"  style="border-top-color:#e5ebf0">{{candidate.zip}}</td>
+
+                  </tr>
+
+
+                 <tr class="trStyle">
+                      <td class="tdLabelStyle">PHONE</td>
+                      <td colspan="3" class ="tdValueStyle"><span *ngFor="let ph of candidate.phones">{{ph.type}} : {{ph.number}} <span style="color:#f47920;font-weight: bold">|</span> </span></td>
+                 </tr>
+
+                  <tr  class="trStyle">
+                      <td class="tdLabelStyle" >EMAIL</td>
+                      <td colspan="3" class ="tdValueStyle">WORK : {{candidate.socialMedia.email}} <span style="color:#f47920;font-weight: bold">| </span>ALT : {{candidate.socialMedia.alternateEmail}}</td>
+                 </tr>
+
+                <tr class="trStyle">
+                      <td class="tdLabelStyle">STREET ADDRESS</td>
+                      <td colspan="3" class ="tdValueStyle">{{candidate.street}}</td>
+                 </tr>
+
+                  <tr class="trStyle">
+                      <td class="tdLabelStyle">CURRENT LOCATION</td>
+                      <td colspan="3" class ="tdValueStyle">{{candidate.currentLocation}}</td>
+                 </tr>
+
+                 <tr class="trStyle">
+                      <td class="tdLabelStyle">PREFERRED LOCATION</td>
+                      <td colspan="3" class ="tdValueStyle"><span *ngFor="let prefLocation of candidate.preferredLocations">{{prefLocation.location}} <span style="color:#f47920;font-weight: bold">|</span> </span></td>
+                 </tr>
+
+                 
+             </tbody>    
+      </table>
+
+</div>
+
+<div class="ui-grid-col-12" style="padding-right:2%"  *ngIf="candidate.visas?.length > 0">
+ <h5 style="color:#f47920;font-weight: bold;padding-top:1%">VISA INFORMATION :</h5>
+
+      <table class="tableStyle" >
+          <thead class="tHeadStyle">
+            <tr>
+               <th class="thStyle">VISA NAME</th>
+               <th class="thStyle">START DATE</th>  
+               <th class="thStyle">END DATE</th>   
+               <th class="thStyle">STATUS</th>
+            </tr>     
+          </thead>
+           <tbody class="tbodyStyle">
+                <tr class="trStyle"  *ngFor="let im of candidate.visas">
+                      <td class ="tdValueStyle" style="border-left-color:#dae8ef">{{im.immigrationType}}</td>
+                      <td class ="tdValueStyle">{{im.startDate | date }}</td>
+                      <td class ="tdValueStyle">{{im.endDate | date }}</td>
+                      <td class ="tdValueStyle">{{im.status}}</td>
+                 </tr>
+           </tbody>
+      </table> 
+
+</div>
+
+<div class="ui-grid-col-12" style="padding-right:2%">
+    
+    <h5 style="color:#f47920;font-weight: bold;padding-top:1%">EMPLOYEMENT INFORMATION :</h5>
+     <table class="tableStyle">
+         <tbody class="tbodyStyle">
+
+                <tr class="trStyle">
+                      <td class="tdLabelStyle" style="width:33%;">EMPLOYMENT TYPES</td>
+                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0;width:21%;">
+                          {{candidate.employmentTypes}}
+                    </td>
+
+                      <td class="tdLabelStyle">WORK AUTHORIZAION</td>
+                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0;width:20.5%;">{{candidate.workAuthorization}}</td>
+                 </tr>
+
+         </tbody>
+     </table>
+
+</div>
+
+<div class="ui-grid-col-12" style="padding-right:2%" *ngIf="candidate.workExperiences?.length > 0">
+ <h5 style="color:#f47920;font-weight: bold;padding-top:1%">WORK EXPERIANCE :</h5>
+
+      <table class="tableStyle" >
+          <thead class="tHeadStyle">
+            <tr>
+               <th class="thStyle">JOB TITLE</th>
+               <th class="thStyle">COMPANY NAME</th>
+               <th class="thStyle">START DATE</th>  
+               <th class="thStyle">END DATE</th>   
+            </tr>     
+          </thead>
+           <tbody class="tbodyStyle">
+                <tr class="trStyle"  *ngFor="let we of candidate.workExperiences">
+                      <td class ="tdValueStyle" style="border-left-color:#dae8ef">{{we.jobTitle}}</td>
+                      <td class ="tdValueStyle">{{we.companyName}}</td>
+                      <td class ="tdValueStyle">{{we.startDate | date }}</td>
+                      <td class ="tdValueStyle">{{we.endDate}}</td>
+                 </tr>
+           </tbody>
+      </table> 
+
+</div>
+
+<div class="ui-grid-col-12" style="padding-right:2%" *ngIf="candidate.skills?.length > 0">
+ <h5 style="color:#f47920;font-weight: bold;padding-top:1%">SKILL :</h5>
+
+      <table class="tableStyle" >
+          <thead class="tHeadStyle">
+            <tr>
+               <th class="thStyle">SKILL NAME</th>
+               <th class="thStyle">YEARS OF EXPERIANCE</th>
+               <th class="thStyle">LAST USED</th>
+            </tr>     
+          </thead>
+           <tbody class="tbodyStyle">
+                <tr class="trStyle"  *ngFor="let skill of candidate.skills">
+                      <td class ="tdValueStyle" style="border-left-color:#dae8ef">{{skill.skillName}}</td>
+                      <td class ="tdValueStyle" >{{skill.yearsExp}}</td>
+                      <td class ="tdValueStyle">{{skill.lastUsed | date }}</td>
+                 </tr>
+           </tbody>
+      </table> 
+
+</div>
+
+<div class="ui-grid-col-12" style="padding-right:2%" *ngIf="candidate.educations?.length > 0">
+ <h5 style="color:#f47920;font-weight: bold;padding-top:1%">  EDUCATION :</h5>
+
+      <table class="tableStyle" >
+          <thead class="tHeadStyle">
+            <tr>
+               <th class="thStyle">DEGREE</th>
+               <th class="thStyle">INSTITUTION</th>
+               <th class="thStyle">CITY/STATE</th>
+               <th class="thStyle">COUNTRY</th>
+            </tr>     
+          </thead>
+           <tbody class="tbodyStyle">
+                <tr class="trStyle"  *ngFor="let edu of candidate.educations">
+                      <td class ="tdValueStyle" style="border-left-color:#dae8ef">{{edu.highestDegree}}</td>
+                      <td class ="tdValueStyle" >{{edu.institution}}</td>
+                      <td class ="tdValueStyle" >{{edu.cityOrState}}</td>
+                      <td class ="tdValueStyle" >{{edu.country}}</td>
+                 </tr>
+           </tbody>
+      </table> 
+
+</div>
+
+<div class="ui-grid-col-12" style="padding-right:2%">
+    <h5 style="color:#f47920;font-weight: bold;padding-top:1%">SOCIAL MEDIA :</h5>
+      <table class="tableStyle">
+             <tbody class="tbodyStyle">
+                  <tr class="trStyle">
+                      <td class="tdLabelStyle" style="width:33%;">LINKEDIN URL</td>
+                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0;width:21%;">{{candidate.socialMedia.linkedin}}</td>
+
+                      <td class="tdLabelStyle" style="width:25.5%;">TWITTER URL</td>
+                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0;">{{candidate.socialMedia.twitter}}</td>
+                 </tr>
+
+                 <tr class="trStyle">
+                      <td class="tdLabelStyle" style="width:33%;">FACEBOOK URL</td>
+                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0;width:21%;">{{candidate.socialMedia.facebook}}</td>
+
+                      <td class="tdLabelStyle" style="width:25.5%;">PERSONAL WEBSITE</td>
+                      <td  class ="tdValueStyle" style="border-top-color:#e5ebf0;">{{candidate.socialMedia.personalWebSite}}</td>
+                 </tr>
+             </tbody>
+      </table>
+</div>
+
+</div>  
+
+<div class="ui-grid-row" style="margin-top:2%;">
+     
+    <div class="ui-grid-col-12" style="text-align:center">
+        <button pButton type="button"  icon="fa-file-text" iconPos="right" (click)="goToEnrollment()" label="Genarete Enrollment"></button>
+    </div>
+</div> 
+
+    </p-panel>
+
+ </div>
+    
+
+
+</div>
